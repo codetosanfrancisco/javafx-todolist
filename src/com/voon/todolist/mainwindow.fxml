@@ -13,21 +13,34 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
 <BorderPane fx:controller="com.voon.todolist.Controller"
             xmlns:fx="http://javafx.com/fxml" fx:id="mainBorderPane">
     <top>
-        <MenuBar>
-            <Menu text="File">
-                <items>
-                    <MenuItem text="New ..." onAction="#showNewItemDialog"/>
-                    <SeparatorMenuItem />
-                    <MenuItem text="Exit" />
-                </items>
-            </Menu>
-        </MenuBar>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New ..." onAction="#showNewItemDialog"/>
+                        <SeparatorMenuItem />
+                        <MenuItem text="Exit" />
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox>
+                    <Button text="New ... " onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add a New Todo item."/>
+                        </tooltip>
+                    </Button>
+                </HBox>
+            </ToolBar>
+        </VBox>
     </top>
     <left>
-        <ListView fx:id="todoListView">
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
 
         </ListView>
     </left>
